@@ -46,6 +46,10 @@ A regressão logística venceu porque o `class_weight='balanced'` age direto na 
 | Recall | 0.65 |
 | AUC | 0.73 |
 
+![Matriz de confusão](matriz_confusao.png)
+
+Dos 124 clientes que realmente deram churn no conjunto de teste, o modelo identificou 80 corretamente e deixou passar 44. Em troca, marcou 90 clientes como risco que na verdade não sairiam. Esse é o trade-off já discutido acima: mais falsos positivos, mas bem menos falsos negativos do que a primeira versão do modelo.
+
 ## O que mais pesa na decisão
 
 ![Importância das variáveis](importancia_variaveis.png)
