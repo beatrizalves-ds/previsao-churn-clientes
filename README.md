@@ -58,6 +58,18 @@ Os coeficientes da regressão logística confirmam o padrão visto na análise e
 
 Na prática, isso sugere um gatilho simples pro time comercial: cliente que passa muito tempo sem comprar é o sinal de alerta mais confiável pra agir antes de perdê-lo de vez.
 
+## Do modelo à ação: ranking de risco por cliente
+
+Prever churn como 0 ou 1 tem uso limitado sozinho. O que uma área comercial realmente usa é uma lista de clientes ordenada por probabilidade de saída, pra saber por quem começar. Por isso o modelo também gera a probabilidade de churn de cada cliente (`predict_proba`), não só a classificação binária, e essa probabilidade é traduzida em três faixas de risco:
+
+| Faixa de risco | Clientes (base de teste, n=400) |
+|---|---|
+| Alto (≥ 70%) | 65 |
+| Médio (40–70%) | 177 |
+| Baixo (< 40%) | 158 |
+
+Nos 15 clientes de maior risco, 10 realmente deram churn, o que mostra que mesmo sem ser perfeito, o modelo concentra bem o esforço comercial: ligar pra esses clientes é bem mais eficiente do que contatar a base toda de forma aleatória. O ranking completo está em `ranking_risco_churn.csv`.
+
 ## Próximos passos
 
 - Testar outros modelos (XGBoost, LightGBM) e técnicas de balanceamento como SMOTE
